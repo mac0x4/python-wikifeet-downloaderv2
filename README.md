@@ -9,12 +9,12 @@ Some of these improvements were shared with the original maintainer, who respond
 ## Features
 
 - Download all available images from a model page
-- Automatic resume support by skipping existing files
+- Skip already downloaded files
 - Parallel downloads
-- Configurable retry logic
-- Connection timeouts
-- Robust error handling
+- Automatic retry handling
+- Configurable request timeout and retry delay
 - Progress indicator
+- Robust error handling
 - Cross-platform support (Windows, Linux, macOS)
 
 ## Requirements
@@ -22,7 +22,7 @@ Some of these improvements were shared with the original maintainer, who respond
 - Python 3.9+
 - requests
 
-Install dependencies:
+## Installation
 
 ```bash
 pip install requests
@@ -33,19 +33,25 @@ pip install requests
 Download all images from a model page:
 
 ```bash
-python downloader.py https://www.wikifeet.com/Some_Model
+python wikifeetdownloader.py https://www.wikifeet.com/Some_Model
 ```
 
 Specify a custom output directory:
 
 ```bash
-python downloader.py https://www.wikifeet.com/Some_Model --download_path ./downloads
+python wikifeetdownloader.py https://www.wikifeet.com/Some_Model --download_path ./downloads
 ```
 
 Use multiple download threads:
 
 ```bash
-python downloader.py https://www.wikifeet.com/Some_Model --threads 5
+python wikifeetdownloader.py https://www.wikifeet.com/Some_Model --threads 5
+```
+
+Configure retries and delay:
+
+```bash
+python wikifeetdownloader.py https://www.wikifeet.com/Some_Model --threads 5 --retries 5 --delay 2
 ```
 
 ## Command Line Options
@@ -53,24 +59,21 @@ python downloader.py https://www.wikifeet.com/Some_Model --threads 5
 | Option | Description |
 |--------|-------------|
 | `--download_path` | Output directory |
-| `--threads` | Number of parallel downloads |
-| `--retries` | Retry count for failed downloads |
-| `--delay` | Delay between retry attempts |
+| `--threads` | Number of parallel download threads |
+| `--retries` | Retry attempts for failed downloads |
+| `--delay` | Delay (in seconds) between retry attempts |
 
 ## Disclaimer
 
-This tool is intended to download content that is already publicly accessible. Users are responsible for complying with all applicable laws, copyright regulations, and the terms of service of the websites they access.
+This tool downloads images that are already publicly accessible. Users are solely responsible for complying with applicable laws, copyright regulations, and the terms of service of the websites they access.
 
 ## Acknowledgements
 
 Thanks to the original project for the initial inspiration.
 
 
-
 ---
 
-If this project makes your life a little easier, that's great.
-
-Feel free to improve it, fork it, or build upon it.
+If you find this project useful, feel free to improve it, fork it, or build upon it.
 
 Happy coding! 🍻
